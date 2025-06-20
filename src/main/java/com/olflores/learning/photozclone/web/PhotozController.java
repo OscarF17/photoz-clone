@@ -24,12 +24,12 @@ public class PhotozController {
     }
 
     @GetMapping("/photoz")
-    public Collection<Photo> get() {
+    public Iterable<Photo> get() {
         return photozService.get();
     }
 
     @GetMapping("/photoz/{id}")
-    public Photo get(@PathVariable String id) {
+    public Photo get(@PathVariable Integer id) {
         Photo photo = photozService.get(id);
         if (photo == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -38,11 +38,8 @@ public class PhotozController {
     }
 
     @DeleteMapping("/photoz/{id}")
-    public void delete(@PathVariable String id) {
-        Photo photo = photozService.remove(id);
-        if (photo == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+    public void delete(@PathVariable Integer id) {
+        photozService.remove(id);
     }
 
     @PostMapping("/photoz")

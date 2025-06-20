@@ -2,12 +2,16 @@ package com.olflores.learning.photozclone.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("PHOTOZ")
 public class Photo {
-    private String id;
+    @Id
+    private Integer id;
 
     @NotEmpty
-    private String filename;
+    private String fileName;
 
     private String contentType;
 
@@ -17,16 +21,11 @@ public class Photo {
     public Photo() {
     }
 
-    public Photo(String id, String filename) {
-        this.id = id;
-        this.filename = filename;
-    }
-
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -39,11 +38,11 @@ public class Photo {
     }
 
     public String getFilename() {
-        return filename;
+        return fileName;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setFilename(String fileName) {
+        this.fileName = fileName;
     }
 
     public byte[] getData() {
